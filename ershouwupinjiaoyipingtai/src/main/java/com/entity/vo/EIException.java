@@ -1,11 +1,8 @@
 
-package com.entity.vo;
+package com.entity;
+
 /**
- * @author 朝
- * @ClassName: EIException
- * @Description: 异常
- * @date 2026-05-20  下午 3:12
- * @Version:
+ * 自定义异常
  */
 public class EIException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
