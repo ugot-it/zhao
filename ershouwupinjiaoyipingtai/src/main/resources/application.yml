@@ -1,25 +1,38 @@
 # Tomcat
 server:
-    tomcat:
-        uri-encoding: UTF-8
-    port: 8080
-    servlet:
-        context-path: /ershouwupinjiaoyipingtai
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+  servlet:
+    context-path: /ershouwupinjiaoyipingtai
 
 spring:
-    datasource:
-        driverClassName: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/ershouwupinjiaoyipingtai?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useSSL=false
-        username: root
-        password: 123456
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ershouwupinjiaoyipingtai?useUnicode=true&characterEncoding=utf-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: 123456
+    redis:
+      host: localhost  # Redis服务器地址
+      port: 6379       # Redis服务器端口
+      password:        # Redis密码（没有则留空）
+      database: 0      # 数据库索引
+      timeout: 5000ms  # 连接超时时间
+      lettuce:
+        pool:
+          max-active: 8   # 最大连接数
+          max-idle: 8     # 最大空闲连接
+          min-idle: 0     # 最小空闲连接
+          max-wait: -1ms
+        # 连接池最大阻塞等待时间
 
 
-    servlet:
-      multipart:
-        max-file-size: 1000MB
-        max-request-size: 1000MB
-    resources:
-      static-locations: classpath:static/,file:static/
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  resources:
+    static-locations: classpath:static/,file:static/
 
 #mybatis
 mybatis-plus:
@@ -51,3 +64,5 @@ mybatis-plus:
 logging:
   level:
     com.dao: debug
+
+

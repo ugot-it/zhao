@@ -15,13 +15,17 @@ public class InterceptorConfig extends WebMvcConfigurationSupport{
     public AuthorizationInterceptor getAuthorizationInterceptor() {
         return new AuthorizationInterceptor();
     }
-	
+
+	//拦截配置器
 	@Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getAuthorizationInterceptor()).addPathPatterns("/**").excludePathPatterns("/static/**");
-        super.addInterceptors(registry);
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(getAuthorizationInterceptor())
+				.addPathPatterns("/**")
+				.excludePathPatterns("/static/**",
+						"/test/**"
+				);
+		super.addInterceptors(registry);
 	}
-	
 	/**
 	 * springboot 2.0配置WebMvcConfigurationSupport之后，会导致默认配置被覆盖，要访问静态资源需要重写addResourceHandlers方法
 	 */
