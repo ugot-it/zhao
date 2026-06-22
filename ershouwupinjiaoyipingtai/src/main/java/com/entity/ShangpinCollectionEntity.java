@@ -80,6 +80,8 @@ public class ShangpinCollectionEntity<T> implements Serializable {
     private Integer shangpinCollectionTypes;
 
 
+
+
     /**
      * 收藏时间
      */
