@@ -1,0 +1,4 @@
+git pull origin main  //拉取远程
+git add .       //把所有修改加入暂存区
+git commit -m "这里写更新说明"  //提交修改
+git push origin main  //推送到远程 GitHub 仓库
