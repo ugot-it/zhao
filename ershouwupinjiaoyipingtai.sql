@@ -11,7 +11,7 @@
  Target Server Version : 80400 (8.4.0)
  File Encoding         : 65001
 
- Date: 20/06/2026 17:40:32
+ Date: 24/06/2026 16:00:10
 */
 
 SET NAMES utf8mb4;
@@ -106,15 +106,15 @@ CREATE TABLE `dictionary`  (
 -- ----------------------------
 INSERT INTO `dictionary` VALUES (1, 'sex_types', '性别类型', 1, '男', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (2, 'sex_types', '性别类型', 2, '女', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (3, 'gonggao_types', '公告类型', 1, '公告类型1', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (4, 'gonggao_types', '公告类型', 2, '公告类型2', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (3, 'gonggao_types', '公告类型', 1, '近期', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (4, 'gonggao_types', '公告类型', 2, '往期', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (5, 'shangjia_xingji_types', '商家信用类型', 1, '一级', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (6, 'shangjia_xingji_types', '商家信用类型', 2, '二级', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (7, 'shangjia_xingji_types', '商家信用类型', 3, '三级', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (8, 'shangpin_types', '商品类型', 1, '商品类型1', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (9, 'shangpin_types', '商品类型', 2, '商品类型2', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (10, 'shangpin_types', '商品类型', 3, '商品类型3', NULL, NULL, '2023-03-23 16:06:57');
-INSERT INTO `dictionary` VALUES (11, 'shangpin_types', '商品类型', 4, '商品类型4', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (8, 'shangpin_types', '商品类型', 1, '全新', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (9, 'shangpin_types', '商品类型', 2, '几乎全新', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (10, 'shangpin_types', '商品类型', 3, '微瑕', NULL, NULL, '2023-03-23 16:06:57');
+INSERT INTO `dictionary` VALUES (11, 'shangpin_types', '商品类型', 4, '状态一般', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (12, 'isdefault_types', '是否默认地址', 1, '否', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (13, 'isdefault_types', '是否默认地址', 2, '是', NULL, NULL, '2023-03-23 16:06:57');
 INSERT INTO `dictionary` VALUES (14, 'shangpin_chat_types', '数据类型', 1, '问题', NULL, NULL, '2023-03-23 16:06:57');
@@ -172,14 +172,15 @@ CREATE TABLE `shangjia`  (
   `shangjia_delete` int NULL DEFAULT NULL COMMENT '逻辑删除',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间 show1 show2 photoShow ',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商家' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商家' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of shangjia
 -- ----------------------------
-INSERT INTO `shangjia` VALUES (1, '123', '123456', 'c', '13562481265', '54654@qq.com', 'upload/A.jpg', 1, 463.12, 'A商家', 1, '2026-06-19 17:01:14');
-INSERT INTO `shangjia` VALUES (2, 'a', '123456', 'a', '586387387', '45687@qq.com', 'upload/B.jpg', 1, 74385.00, 'B商家', 1, '2026-06-19 17:03:20');
-INSERT INTO `shangjia` VALUES (3, 'b', '123456', 'b', '8767387383', '546553@qq.com', 'upload/C.jpg', 2, 48573.00, 'C商家', 1, '2026-06-19 17:03:22');
+INSERT INTO `shangjia` VALUES (1, 'a1', 'e10adc3949ba59abbe56e057f20f883e', 'c', '13562481265', '54654@qq.com', 'upload/A.jpg', 1, 463.12, 'A商家', 1, '2026-06-19 17:01:14');
+INSERT INTO `shangjia` VALUES (2, 'a2', 'e10adc3949ba59abbe56e057f20f883e', 'a', '586387387', '45687@qq.com', 'upload/B.jpg', 1, 74385.00, 'B商家', 1, '2026-06-19 17:03:20');
+INSERT INTO `shangjia` VALUES (3, 'a3', 'e10adc3949ba59abbe56e057f20f883e', 'b', '8767387383', '546553@qq.com', 'upload/C.jpg', 2, 48573.00, 'C商家', 1, '2026-06-19 17:03:22');
+INSERT INTO `shangjia` VALUES (4, '123456', 'e10adc3949ba59abbe56e057f20f883e', '哇哈哈', '18405266284', '2893244197@qq.com', '/upload/1782285461355.jpg', 1, 0.00, '<p>一家小公司</p>', 1, '2026-06-24 15:04:21');
 
 -- ----------------------------
 -- Table structure for shangpin
@@ -200,25 +201,26 @@ CREATE TABLE `shangpin`  (
   `insert_time` timestamp NULL DEFAULT NULL COMMENT '录入时间',
   `create_time` timestamp NULL DEFAULT NULL COMMENT '创建时间  show1 show2 photoShow',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '商品' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of shangpin
 -- ----------------------------
-INSERT INTO `shangpin` VALUES (1, 2, '商品名称1', '1679558856753', 'upload/sp1.jpg', 1, 101, 475.63, 104, '商品介绍1', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (2, 2, '商品名称2', '1679558856727', 'upload/sp2.jpg', 1, 102, 321.34, 181, '商品介绍2', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (3, 3, '商品名称3', '1679558856799', 'upload/sp3.jpg', 4, 103, 36.08, 405, '商品介绍3', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (4, 3, '商品名称4', '1679558856784', 'upload/sp4.jpg', 2, 104, 136.40, 482, '商品介绍4', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (5, 3, '商品名称5', '1679558856762', 'upload/sp5.jpg', 3, 105, 357.65, 361, '商品介绍5', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (6, 3, '商品名称6', '1679558856787', 'upload/sp6.jpg', 4, 106, 191.31, 281, '商品介绍6', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (7, 1, '商品名称7', '1679558856775', 'upload/sp7.jpg', 3, 107, 434.11, 271, '商品介绍7', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (8, 2, '商品名称8', '1679558856806', 'upload/sp8.jpg', 4, 107, 145.20, 405, '商品介绍8', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (9, 1, '商品名称9', '1679558856769', 'upload/sp9.jpg', 3, 107, 87.04, 264, '商品介绍9', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (10, 2, '商品名称10', '1679558856756', 'upload/sp10.jpg', 2, 1010, 257.70, 53, '商品介绍10', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (11, 2, '商品名称11', '1679558856797', 'upload/sp11.jpg', 4, 1011, 52.89, 177, '商品介绍11', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (12, 2, '商品名称12', '1679558856773', 'upload/sp12.jpg', 2, 1012, 71.55, 318, '商品介绍12', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
-INSERT INTO `shangpin` VALUES (13, 3, '商品名称13', '1679558856730', 'upload/sp13.jpg', 3, 1013, 473.88, 279, '商品介绍13', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (1, 2, 'redis6开发', '1679558856753', 'upload/sp1.jpg', 1, 101, 475.63, 104, '商品介绍1', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (2, 2, '一本好书', '1679558856727', 'upload/sp2.jpg', 1, 102, 321.34, 181, '商品介绍2', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (3, 3, '概率论', '1679558856799', 'upload/sp3.jpg', 4, 103, 36.08, 405, '商品介绍3', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (4, 3, '软件工程经济学', '1679558856784', 'upload/sp4.jpg', 2, 104, 136.40, 482, '商品介绍4', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (5, 3, '软件工程理论', '1679558856762', 'upload/sp5.jpg', 3, 105, 357.65, 361, '商品介绍5', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (6, 3, '软件质量保证', '1679558856787', 'upload/sp6.jpg', 4, 106, 191.31, 281, '商品介绍6', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (7, 1, 'Java设计模式', '1679558856775', 'upload/sp7.jpg', 3, 107, 434.11, 271, '商品介绍7', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (8, 2, '区块链技术', '1679558856806', 'upload/sp8.jpg', 4, 107, 145.20, 405, '商品介绍8', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (9, 1, '计算机组成原理', '1679558856769', 'upload/sp9.jpg', 3, 107, 87.04, 264, '商品介绍9', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (10, 2, 'python编程入门', '1679558856756', 'upload/sp10.jpg', 2, 1010, 257.70, 53, '商品介绍10', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (11, 2, '又是一本好书', '1679558856797', 'upload/sp11.jpg', 4, 1011, 52.89, 177, '商品介绍11', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (12, 2, '软件需求工程', '1679558856773', 'upload/sp12.jpg', 2, 1012, 71.55, 318, '商品介绍12', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (13, 3, 'java面向对象', '1679558856730', 'upload/sp13.jpg', 3, 1013, 473.88, 279, '商品介绍13', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
 INSERT INTO `shangpin` VALUES (14, 1, '商品名称14', '1679558856783', 'upload/sp14.jpg', 3, 1014, 338.87, 103, '商品介绍14', 1, '2023-03-23 16:07:36', '2023-03-23 16:07:36');
+INSERT INTO `shangpin` VALUES (15, 4, '小粉饼', '1782285505543', '/upload/1782285522706.webp', 4, 12, 122.00, 1, '<p>想买</p>', 1, '2026-06-24 15:20:00', '2026-06-24 15:20:00');
 
 -- ----------------------------
 -- Table structure for shangpin_chat
@@ -375,17 +377,18 @@ CREATE TABLE `token`  (
   `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '新增时间',
   `expiratedtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '过期时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = 'token表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = 'token表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of token
 -- ----------------------------
 INSERT INTO `token` VALUES (1, 1, 'a1', 'yonghu', '用户', 'fls6t3siobmhgidrbal8ggzt9lv0le75', '2023-03-23 16:10:14', '2026-06-19 17:34:31');
-INSERT INTO `token` VALUES (2, 1, 'admin', 'users', '管理员', 'ujhxxtf4645cgsbp4v6r1278a9gnfvkr', '2023-03-23 16:14:10', '2026-06-20 17:26:09');
-INSERT INTO `token` VALUES (3, 1, 'a1', 'shangjia', '商家', 'ccigiqedxmb6gquof08t5nzosjilgr81', '2023-03-23 16:16:34', '2026-06-18 16:28:09');
+INSERT INTO `token` VALUES (2, 1, 'admin', 'users', '管理员', '0hxer6dxbk46g6yg69kfvk30vmgozxlh', '2023-03-23 16:14:10', '2026-06-24 16:06:17');
+INSERT INTO `token` VALUES (3, 1, 'a1', 'shangjia', '商家', '6l0fyxci76gmhyfz8qzub4r9mfqfq3rd', '2023-03-23 16:16:34', '2026-06-24 16:59:42');
 INSERT INTO `token` VALUES (4, 2, 'a2', 'shangjia', '商家', '1ig4wnpgo8rc6jkt3sls5fj96045k9nu', '2026-06-14 21:25:00', '2026-06-14 22:37:12');
 INSERT INTO `token` VALUES (5, 3, 'a3', 'shangjia', '商家', 'hgfoc2ukw57tiza8vgdqfg0u704fb90n', '2026-06-14 21:25:38', '2026-06-14 22:25:39');
 INSERT INTO `token` VALUES (6, 4, '111111', 'yonghu', '用户', 'wf2ju6nlcv3hq1uv3vlohs7pryicr08s', '2026-06-19 20:25:26', '2026-06-19 21:25:27');
+INSERT INTO `token` VALUES (7, 4, '123456', 'shangjia', '商家', 'o4645kwdwhd38fswmrbm3vupkljpv2ps', '2026-06-24 15:04:31', '2026-06-24 16:17:01');
 
 -- ----------------------------
 -- Table structure for users
